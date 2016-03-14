@@ -24,7 +24,7 @@ then
 	elif [ $1 = "-m" ]
 	then
 		reg='.*(ether|HWaddr|address:)'
-		grep -E $reg | sed -E "s/$reg ?//g" | awk '{print $1}'
+		grep -E $reg | sed -E "s/$reg//g" | awk '{print $1}'
 	elif [ $1 = "-n" ]
 	then
 		reg='.*[mM]ask:?' 
