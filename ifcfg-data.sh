@@ -23,7 +23,7 @@ then
 		grep -E $reg | sed -E "s/$reg//g" | sed -E "s/%|\// /g" | awk '{print $1}'
 	elif [ $1 = "-m" ]
 	then
-		reg='.*(ether|HWaddr)'
+		reg='.*(ether|HWaddr|address:)'
 		grep -E $reg | sed -E "s/$reg ?//g" 
 	elif [ $1 = "-n" ]
 	then
