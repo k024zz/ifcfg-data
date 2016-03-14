@@ -16,16 +16,19 @@ help()
 if [ $# -eq 1 ]
 then
 	#if [[ $1 =~ ^-[imn]$ ]]
-	flag=`echo $1 | grep '^-[imn]$'`
-	if [ $flag = "-i" ]
+	#flag=`echo $1 | grep '^-[imn]$'`
+	if [ $1 = "-i" ]
 	then
-		grep '.*inet' | sed 's/%/ /g' | awk '{print $2}'
-	elif [ $flag = "-m" ]
+		reg='.*(inet|addr:)'
+		grep -E $reg | sed -E "s/$reg//g" | sed 's/%/ /p' | awk '{print $1}'
+	elif [ $1 = "-m" ]
 	then
-		grep '.*ether' | awk '{print $2}'
-	elif [ $flag = "-n" ]
+		reg='.*(ether|HWaddr)'
+		grep -E $reg | sed -E "s/$reg ?//g" 
+	elif [ $1 = "-n" ]
 	then
-		grep '.*[mM]ask' | awk '{print $4}'
+		reg='.*[mM]ask:?' 
+		grep -E $reg | sed -E "s/$reg//g" | awk '{print $1}'
 	else
 		help
 	fi
