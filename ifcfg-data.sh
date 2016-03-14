@@ -19,7 +19,7 @@ then
 	#flag=`echo $1 | grep '^-[imn]$'`
 	if [ $1 = "-i" ]
 	then
-		reg='.*(inet6?\s?|addr:)'
+		reg='.*(inet6?|addr:)'
 		grep -E $reg | sed -E "s/$reg//g" | sed -E "s/%|\// /g" | awk '{print $1}'
 	elif [ $1 = "-m" ]
 	then
