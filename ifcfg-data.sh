@@ -9,7 +9,7 @@ help()
 	echo "\t-i\tPrint all IP addresses."
 	echo "\t-m\tPrint all MAC addresses."
 	echo "\t-n\tPrint all netmasks."
-	exit 2
+	exit 127 
 }     
 
 # check the number of arguments
